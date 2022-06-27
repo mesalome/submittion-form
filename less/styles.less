@@ -23,9 +23,10 @@ form{
     background-color: @color2;
     color: @color1;
     padding-top: @space;
-    padding-bottom: @space;
     margin-left: 25%;
     margin-right: 25%;
+    max-width: 50%;
+    min-width: fit-content;
 }
 .personal-information{
     padding-top: @halfspace;
@@ -37,3 +38,50 @@ form{
     font-size: 20px;
     margin-top: @halfspace;
 }
+.datapage{
+    text-align: right;
+    font-size: large;
+    margin-right: @space;
+}
+.datapage h6{
+  padding-bottom: 10px;
+}
+a.data:link,  a.data:visited {
+    color: peachpuff;
+  }
+  
+  a.data:hover {
+    color: gainsboro;
+  }
+  
+  a.data:active {
+    color: rebeccapurple;
+  }
+
+  a.back:link, a.back:visited, a.delete:link, a.delete:visited {
+    color: blue;
+  }
+  
+  a.back:hover, a.delete:hover {
+    color: grey;
+  }
+  
+  a.back:active, a.delete:active {
+    color: red;
+  }
+
+  table{
+    width: 70%;
+
+  }
+  th{
+    height: 2.5em;
+  }
+  th, td {
+    border-bottom: 1px solid #ddd;
+  }
+
+  #back_to_submittion{
+    text-align: left;
+    float: left;
+  }
