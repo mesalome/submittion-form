@@ -13,22 +13,26 @@
 		</header>
 
 		<form action="" method="post">
-			<div class="personal-information"> Name: <input type="text" name="usname" value="" /></div>
-			<div class="personal-information"> Phone: <input type="text" name="surname" value="" /></div>
-			<div class="personal-information"> Email: <input type="text" name="email" value="" /></div>
+			<div class="personal-information"> Name: <input type="text" name="usname" value="" required/></div>
+			<div class="personal-information"> Surname: <input type="text" name="surname" value="" required/></div>
+			<div class="personal-information"> Email: <input type="email" name="email" value="" required/></div>
 			<div id="message"></div>
 			<div ><input type="button" onclick="submitForm();" name="save_contact" value="Save" id="button" /></div>
-			
 		</form>
 	</body>
 	<script type="text/javascript">
+		function isEmail(email) {
+			var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+			return regex.test(email);
+			};
 		function submitForm()
 		{
 			var usname = $('input[name=usname]').val();
 			var surname = $('input[name=surname]').val();
 			var email = $('input[name=email]').val();
 
-			if(usname != '' && surname!= '' && email != '')
+			
+			if(usname != '' && surname!= '' && email != '' && isEmail(email))
 			{
 				var formData = {usname: usname, surname: surname, email: email};
 				$('#message').html('<span style="color: red">Processing form. . . please wait. . .</span>');
@@ -43,12 +47,15 @@
 				}
 				});
 			}
-			else
+			else if(usname != '' && surname!= '' && email != '')
 			{
-				$('#message').html('<span class="no">Please fill all the fields</span>');
+				$('#message').html('<span class="no">Please write valid email address</span>');
+			}
+			else {
+				$('#message').html('<span class="no">fill all the fields</span>');
 			}
 			
-			
-		} 
+		}
+	
 	</script>
 </html>
