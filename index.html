@@ -1,39 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html land="en">
 	<head>
-		<title> submittion form </title>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>Personal Information</title>
+		<link rel="stylesheet" href="css/styles.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	</head>
 	<body>
-		<div id="message"></div>
+		<header>
+			<label for="title"><h1 name="title" id="title">Personal Information</h1></label>
+		</header>
+
 		<form action="" method="post">
-			<div>Name: <input type="text" name="usname" value="" /></div>
-			<div>Surname: <input type="text" name="surname" value="" /></div>
-			<div>Email: <input type="text" name="email" value="" /></div>
-			<div><input type="submit" name="Save_Contact" value="Save" onclick="submitForm();"/></div>
+			<div class="personal-information"> Name: <input type="text" name="usname" value="" /></div>
+			<div class="personal-information"> Phone: <input type="text" name="surname" value="" /></div>
+			<div class="personal-information"> Email: <input type="text" name="email" value="" /></div>
+			<div id="message"></div>
+			<div ><input type="button" onclick="submitForm();" name="save_contact" value="Save" id="button" /></div>
+			
 		</form>
 	</body>
 	<script type="text/javascript">
-		function submitForm(){
+		function submitForm()
+		{
 			var usname = $('input[name=usname]').val();
 			var surname = $('input[name=surname]').val();
 			var email = $('input[name=email]').val();
-			if (usname !=''  && surname !='' && email != ''){
+
+			if(usname != '' && surname!= '' && email != '')
+			{
 				var formData = {usname: usname, surname: surname, email: email};
-		
-				$.ajax({url: "http://localhost:8888/submittion/submit.php", type: "POST", data: formData, success: function(response){ 
-				var res = JSON.parse(response);
-				console.log(res);
-				$('#message').html('Form Submitted Successfully');
+				$('#message').html('<span style="color: red">Processing form. . . please wait. . .</span>');
+				$.ajax({url: "http://localhost:8888/submittion-form/submit.php", type: 'POST', data: formData, success: function(response)
+				{
+					var res = JSON.parse(response);
+					console.log(res);
+					if(res.success == true)
+						$('#message').html('<span class="yes">Form submitted successfully</span>');
+					else
+						$('#message').html('<span class="no">Form not submitted. Some error in running the database query.</span>');
 				}
-				})
-
+				});
 			}
-			else {
-				$('#message').html('<h1>Please fill out all the fields<h1>');
+			else
+			{
+				$('#message').html('<span class="no">Please fill all the fields</span>');
 			}
-		
-		}
-
+			
+			
+		} 
 	</script>
 </html>

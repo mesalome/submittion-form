@@ -1,0 +1,29 @@
+body {
+  background: #f5f6f7;
+  color: #1b1b32;
+  font-family: Helvetica;
+  text-align: center;
+}
+.yes {
+  color: green;
+}
+.no {
+  color: red;
+}
+form {
+  background-color: #1b1b32;
+  color: #f5f6f7;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+.personal-information {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#button {
+  color: grey;
+  font-size: 20px;
+  margin-top: 10px;
+}
