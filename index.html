@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html land="en">
+<html lang="en">
 	<head>
 		<meta charset="UTF-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -9,22 +9,23 @@
 	</head>
 	<body>
 		<header>
-			<label for="title"><h1 name="title" id="title">Personal Information</h1></label>
+			<h1>Personal Information</h1>
 		</header>
 
-		<form action="" method="post">
+		<form method="post">
 			<div class="personal-information"> Name: <input type="text" name="usname" value="" required/></div>
 			<div class="personal-information"> Surname: <input type="text" name="surname" value="" required/></div>
 			<div class="personal-information"> Email: <input type="email" name="email" value="" required/></div>
 			<div id="message"></div>
-			<div ><input type="button" onclick="submitForm();" name="save_contact" value="Save" id="button" /></div>
+			<div ><input type="submit" onclick="submitForm();" name="save_contact" value="Save" id="button" /></div>
 		</form>
-	</body>
-	<script type="text/javascript">
+
+	<script>
 		function isEmail(email) {
 			var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 			return regex.test(email);
 			};
+
 		function submitForm()
 		{
 			var usname = $('input[name=usname]').val();
@@ -58,4 +59,5 @@
 		}
 	
 	</script>
+	</body>
 </html>
