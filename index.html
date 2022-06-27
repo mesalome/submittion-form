@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> submittion form </title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<div id="message"></div>
+		<form action="" method="post">
+			<div>Name: <input type="text" name="usname" value="" /></div>
+			<div>Surname: <input type="text" name="surname" value="" /></div>
+			<div>Email: <input type="text" name="email" value="" /></div>
+			<div><input type="submit" name="Save_Contact" value="Save" onclick="submitForm();"/></div>
+		</form>
+	</body>
+	<script type="text/javascript">
+		function submitForm(){
+			var usname = $('input[name=usname]').val();
+			var surname = $('input[name=surname]').val();
+			var email = $('input[name=email]').val();
+			if (usname !=''  && surname !='' && email != ''){
+				var formData = {usname: usname, surname: surname, email: email};
+		
+				$.ajax({url: "http://localhost:8888/submittion/submit.php", type: "POST", data: formData, success: function(response){ 
+				var res = JSON.parse(response);
+				console.log(res);
+				$('#message').html('Form Submitted Successfully');
+				}
+				})
+
+			}
+			else {
+				$('#message').html('<h1>Please fill out all the fields<h1>');
+			}
+		
+		}
+
+	</script>
+</html>
